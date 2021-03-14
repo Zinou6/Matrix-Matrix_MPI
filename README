@@ -1,0 +1,40 @@
+                                                   PARALLEL DENSE MATRIX-MATRIX MULTIPLICATION WITH MPI
+							   BY : BENSAID Zine El Abidine
+							   		&
+							   	   BOUKHIAR Naima	
+								     25/01/2021
+								     
+1/ Introduction
+ 
+ Ce programme a pour le but de calculer le produit matriciel en parallele.
+ Le code est en c en utilisant la bibliothéque "mpi.h".
+
+2/ Architecture
+
+     --main.c:
+     	        -Creation une structure BLOCK.
+     	        -Appel à "initMatrix","displayMatrix","calcul".
+     	        -Allocation des matrices.
+     	        -Création et affichage des matrices A et B.
+     	        -Affichage des matrices A et B faite uniquement avec le node 0.
+     	        -Affichage du resultat du calcul parallele.
+     	        -Affichage du resultat fait par le dernier node.
+     	         -Affichage et calcul du temps d'execution en parallel. 
+     
+     --initMatrix.c:
+                -Génére une matrice avec des valeurs aléatoires grace à la fonction "generateRandomMatrix".
+     	         
+     --displayMatrix.c:
+                -Affiche la matrice grace à la fonction "printMatrix".
+
+
+     --calcul.c:
+               -Calcul le produit matriciel en séquentiel C=A*B grace à la procedure MultMatrices.
+               -Appel de "displayMatrix" pour afficher la matrice C "Resultat" grace à la fonction "printMatrix".
+               
+
+3/ Execution:
+               - une fichier makefile compile tous les fichier et cree un fichier executable out
+               -  mpirun --hostfile hostfile -np [LE NOMBRE DES PROCESSUS] ./out [LA DIMENSION DES MATRICES]
+
+
